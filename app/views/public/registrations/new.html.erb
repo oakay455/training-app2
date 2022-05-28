@@ -1,0 +1,71 @@
+<div class="mini-title">
+<h2>新規会員登録</h2>
+</div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+
+  <div class="field">
+  名前
+  （姓）<% f.label :first_name %>
+  <%= f.text_field :first_name %>
+  （名）<% f.label :last_name %>
+  <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+  フリガナ
+  （セイ）<% f.label :first_name_kana %>
+  <%= f.text_field :first_name_kana %>
+  （メイ）<% f.label :last_name_kana %>
+  <%= f.text_field :last_name_kana %>
+  </div>
+
+  <div class="field">
+    メールアドレス
+    <% f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    郵便番号
+    <% f.label :postal_code %>
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div class="field">
+    住所
+    <% f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    電話番号（ハイフンなし）
+    <% f.label :telephone_number %>
+    <%= f.text_field :telephone_number %>
+  </div>
+
+  <div class="field">
+    パスワード
+    <% f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    パスワード（確認用）
+    <% f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "新規登録" %>
+  </div>
+<% end %>
+
+<div class="mini-title">
+  既に登録済みの方
+</div>
+<%= link_to "こちら", new_customer_session_path, class: 'post' %>からログインしてください。
